@@ -2,7 +2,13 @@
 
 *A really shitty gulp plugin to read a bunch of files and output a json file.*
 
-**Example usage:**
+**Usage:**
+```js
+var f2Json = require('gulp-files-to-json');
+f2Json(<nameOfFileToOutput.json>)
+```
+
+**Example:**
 
 ```js
 var filesToJson = require('gulp-files-to-json');
