@@ -4,7 +4,7 @@ var PluginError = gutil.PluginError;
 var File = gutil.File;
 var path = require('path');
 
-function fileToJs(file) {
+module.exports = function(file) {
   if (typeof file !== 'string') {
     if (typeof file.path !== 'string') {
       throw new PluginError('gulp-concat', 'Missing path in file options for gulp-concat');
@@ -37,4 +37,4 @@ function fileToJs(file) {
   }
 
   return through(bufferContents, endStream);
-}
+};
