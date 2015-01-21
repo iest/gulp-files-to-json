@@ -7,7 +7,7 @@ var path = require('path');
 module.exports = function(file) {
   if (typeof file !== 'string') {
     if (typeof file.path !== 'string') {
-      throw new PluginError('gulp-concat', 'Missing path in file options for gulp-concat');
+      throw new PluginError('gulp-files-to-json', 'Missing path in file options for gulp-files-to-json');
     }
   }
 
@@ -18,7 +18,7 @@ module.exports = function(file) {
       return;
     }
     if (file.isStream()) {
-      return this.emit('error', new PluginError('gulp-concat', 'Streaming not supported'));
+      return this.emit('error', new PluginError('gulp-files-to-json', 'Streaming not supported'));
     }
 
     var name = path.basename(file.path).replace(path.extname(file.path), '');
