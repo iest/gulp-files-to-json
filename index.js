@@ -4,7 +4,15 @@ var PluginError = gutil.PluginError;
 var File = gutil.File;
 var path = require('path');
 
-module.exports = function(file) {
+module.exports = function(file, options) {
+  if (typeof options === 'undefined') {
+    options = {};
+  }
+
+  options.nameParser = options.nameParser || function(name) {
+    path.basename(name).replace(path.extname(name), '');
+  };
+
   if (typeof file !== 'string') {
     if (typeof file.path !== 'string') {
       throw new PluginError('gulp-files-to-json', 'Missing path in file options for gulp-files-to-json');
@@ -17,11 +25,12 @@ module.exports = function(file) {
     if (file.isNull()) {
       return;
     }
+
     if (file.isStream()) {
       return this.emit('error', new PluginError('gulp-files-to-json', 'Streaming not supported'));
     }
 
-    var name = path.basename(file.path).replace(path.extname(file.path), '');
+    var name = options.nameParser(file.path);
     fileMap[name] = file.contents.toString();
   }
 

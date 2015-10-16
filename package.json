@@ -1,6 +1,6 @@
 {
   "name": "gulp-files-to-json",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "*A really shitty gulp plugin to read a bunch of files and output a json file.*",
   "main": "index.js",
   "scripts": {
