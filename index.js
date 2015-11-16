@@ -10,7 +10,7 @@ module.exports = function(file, options) {
   }
 
   options.nameParser = options.nameParser || function(name) {
-    path.basename(name).replace(path.extname(name), '');
+    return path.basename(name).replace(path.extname(name), '');
   };
 
   if (typeof file !== 'string') {
